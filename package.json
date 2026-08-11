@@ -1,14 +1,14 @@
 {
-  "name": "pokedoll",
-  "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "type": "commonjs",
-  "dependencies": {
-    "discord.js": "^14.27.0"
-  }
+	"name": "pokedoll",
+	"version": "0.1.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"type": "commonjs",
+	"dependencies": {
+		"discord.js": "^14.27.0"
+	}
 }
