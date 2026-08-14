@@ -1,37 +1,42 @@
 const { SlashCommandBuilder } = require("discord.js");
 const moves = require("./data/metronomeMoves.js");
 
-function getRandomResponse(list) {
-	return list[Math.floor(Math.random() * list.length)];
-}
-
-// module.exports is how you export data in Node.js so that you can require() it in other files.
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName("metronome")
-		.setDescription(
-			"The user waggles its finger, triggering a move.There is no telling what will happen.",
-		),
+		.setDescription("The user waggles its finger, triggering a move."),
+
 	async execute(interaction) {
-		// 1. Pick a random move object
-		const selectedMove = moves[Math.floor(Math.random() * moves.length)];
+		const move = moves[Math.floor(Math.random() * moves.length)];
 		const user = interaction.member.displayName;
 
-		// 2. Determine if it hits
-		// If accuracy is null (like Swift or Protect), it always hits.
-		// Otherwise, roll a random number between 1 and 100.
-		let resultMessage = "";
-
-		if (selectedMove.accuracy === null || selectedMove.accuracy === 100) {
-			resultMessage = `${interaction.user} used **${selectedMove.name}**!`;
-		} else {
-			const roll = Math.floor(Math.random() * 100) + 1;
-			if (roll <= selectedMove.accuracy) {
-				resultMessage = `${interaction.user} used **${selectedMove.name}**!`;
-			} else {
-				resultMessage = `${interaction.user} tried to use **${selectedMove.name}**, but it missed!`;
+		// 1. Accuracy Check
+		if (move.accuracy !== null) {
+			const hitRoll = Math.floor(Math.random() * 100) + 1;
+			if (hitRoll > move.accuracy) {
+				return await interaction.reply(
+					`${interaction.user} used **${move.name}**, but it missed!`,
+				);
 			}
 		}
-		await interaction.reply(resultMessage);
+
+		// 2. Secondary Effect Check
+		let effectHappened = false;
+		if (move.effectChance === null) {
+			effectHappened = true;
+		} else if (move.narrative) {
+			const effectRoll = Math.floor(Math.random() * 100) + 1;
+			if (effectRoll <= move.effectChance) {
+				effectHappened = true;
+			}
+		}
+
+		// 3. Final Output
+		let response = `${interaction.user} used **${move.name}**!`;
+		if (effectHappened) {
+			response += `\n✦ *${move.narrative}*`;
+		}
+
+		await interaction.reply(response);
 	},
 };
