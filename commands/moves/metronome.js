@@ -13,7 +13,8 @@ module.exports = {
 			"The user waggles its finger, triggering a move.There is no telling what will happen.",
 		),
 	async execute(interaction) {
-		const response = getRandomResponse(moves);
-		await interaction.reply(response);
+		const user = interaction.member.displayName;
+		const move = getRandomResponse(moves);
+		await interaction.reply(`**${interaction.user}** used **${move}**!`);
 	},
 };
