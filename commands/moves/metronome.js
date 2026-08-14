@@ -15,7 +15,7 @@ module.exports = {
 			const hitRoll = Math.floor(Math.random() * 100) + 1;
 			if (hitRoll > move.accuracy) {
 				return await interaction.reply(
-					`${interaction.user} used **${move.name}**, but it missed!`,
+					`${interaction.user} used **${move.name}**, but it missed!\n*${move.effect}*`,
 				);
 			}
 		}
