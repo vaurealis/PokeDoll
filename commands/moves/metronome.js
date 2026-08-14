@@ -22,9 +22,7 @@ module.exports = {
 
 		// 2. Secondary Effect Check
 		let effectHappened = false;
-		if (move.effectChance === null && move.narrative) {
-			effectHappened = true;
-		} else if (move.narrative) {
+		if (move.effectChance !== null && move.narrative) {
 			const effectRoll = Math.floor(Math.random() * 100) + 1;
 			if (effectRoll <= move.effectChance) {
 				effectHappened = true;
