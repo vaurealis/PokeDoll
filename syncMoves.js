@@ -17,54 +17,14 @@ const statusMap = {
 	nightmare: "The target is locked in a nightmare!",
 
 	// Stat Changes (Decreases)
-	"lower the target's attack": "The target's Attack fell!",
-	"lower the target's defense": "The target's Defense fell!",
-	"lower the target's speed": "The target's Speed fell!",
-	"lower the target's sp. atk": "The target's Sp. Atk fell!",
-	"lower the target's sp. def": "The target's Sp. Def fell!",
-	"lower the target's accuracy": "The target's Accuracy fell!",
-	"lower the target's evasion": "The target's Evasion fell!",
-
-	"lower the target's attack by two stages":
-		"The target's Attack harshly fell!",
-	"lower the target's defense by two stages":
-		"The target's Defense harshly fell!",
-	"lower the target's speed by two stages": "The target's Speed harshly fell!",
-	"lower the target's sp. atk by two stages":
-		"The target's Sp. Atk harshly fell!",
-	"lower the target's sp. def by two stages":
-		"The target's Sp. Def harshly fell!",
-	"lower the target's accuracy by two stages":
-		"The target's Accuracy harshly fell!",
-	"lower the target's evasion by two stages":
-		"The target's Evasion harshly fell!",
+	lowers: "The target's stats fell!",
 
 	// Stat Changes (Increases - for moves that buff the user)
-	"raise the user's attack": "The user's Attack raised!",
-	"raise the user's defense": "The user's Defense raised!",
-	"raise the user's speed": "The user's Speed raised!",
-	"raise the user's sp. atk": "The user's Sp. Atk raised!",
-	"raise the user's sp. def": "The user's Sp. Def raised!",
-	"raise the user's accuracy": "The user's Accuracy raised!",
-	"raise the user's evasion": "The user's Evasion raised!",
-
-	"raise the user's attack by two stages": "The user's Attack sharply raised!",
-	"raise the user's defense by two stages":
-		"The user's Defense sharply raised!",
-	"raise the user's speed by two stages": "The user's Speed sharply raised!",
-	"raise the user's sp. atk by two stages":
-		"The user's Sp. Atk sharply raised!",
-	"raise the user's sp. def by two stages":
-		"The user's Sp. Def sharply raised!",
-	"raise the user's accuracy by two stages":
-		"The user's Accuracy sharply raised!",
-	"raise the user's evasion by two stages":
-		"The user's Evasion sharply raised!",
+	raises: "The target's stats were raised!",
 
 	// Miscellaneous Effects
 	recoil: "The user was hurt by recoil!",
-	vampiric: "The user drained the target's energy!",
-	"critical hit": "A critical hit!",
+	drains: "The user drained the target's energy!",
 	trap: "The target can no longer escape!",
 };
 
