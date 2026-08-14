@@ -1,8 +1,6 @@
-// The fs module is Node's native file system module. fs is used to read the commands directory and identify our command files
 const fs = require("node:fs");
-// The path module is Node's native path utility module. path helps construct paths to access files and directories.
 const path = require("node:path");
-// The Collection class extends JavaScript's native Map class, and includes more extensive, useful functionality.
+
 const {
 	Client,
 	Collection,
@@ -10,7 +8,15 @@ const {
 	GatewayIntentBits,
 	MessageFlags,
 } = require("discord.js");
-const { token } = require("./config.json");
+
+// Use the environment variable if it exists, otherwise fall back to config.json for local testing
+let token;
+try {
+	const config = require("./config.json");
+	token = config.token;
+} catch (e) {
+	token = process.env.DISCORD_TOKEN;
+}
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
