@@ -32,9 +32,9 @@ module.exports = {
 		}
 
 		// 3. Final Output
-		let response = `${interaction.user} used **${move.name}**!`;
+		let response = `${interaction.user} used **${move.name}**!\n*${move.effect}`;
 		if (effectHappened) {
-			response += `\n✦ *${move.narrative}*`;
+			response += `\n✦ **${move.narrative}**`;
 		}
 
 		await interaction.reply(response);

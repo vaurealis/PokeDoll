@@ -16,6 +16,9 @@ const statusMap = {
 	curse: "The target was cursed!",
 	nightmare: "The target is locked in a nightmare!",
 
+	// Fiekd Targeting
+	field: "The user targeted the field!",
+
 	// Stat Changes (Decreases)
 	lowers: "The target's stats fell!",
 
@@ -48,14 +51,15 @@ async function syncMoves() {
 			const effectEntry = detail.data.effect_entries.find(
 				(e) => e.language.name === "en",
 			);
-			const effectText = effectEntry
+			const shortEffectText = effectEntry
 				? effectEntry.short_effect.toLowerCase()
 				: "";
+			const longEffectText = effectEntry ? effectEntry.effect : "";
 
 			// 2. Identify the narrative flavor
 			let narrative = null;
 			for (const [key, text] of Object.entries(statusMap)) {
-				if (effectText.includes(key)) {
+				if (shortEffectText.includes(key)) {
 					narrative = text;
 					break;
 				}
@@ -63,6 +67,7 @@ async function syncMoves() {
 
 			moveData.push({
 				name: cleanName,
+				effect: longEffectText,
 				accuracy: detail.data.accuracy,
 				effectChance: detail.data.effect_chance,
 				narrative: narrative, // This is our "Active Narrative"
