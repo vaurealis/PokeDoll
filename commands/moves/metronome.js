@@ -23,13 +23,13 @@ module.exports = {
 		let resultMessage = "";
 
 		if (selectedMove.accuracy === null || selectedMove.accuracy === 100) {
-			resultMessage = `**${user}** used **${selectedMove.name}**!`;
+			resultMessage = `${interaction.user} used **${selectedMove.name}**!`;
 		} else {
 			const roll = Math.floor(Math.random() * 100) + 1;
 			if (roll <= selectedMove.accuracy) {
-				resultMessage = `**${user}** used **${selectedMove.name}**!`;
+				resultMessage = `${interaction.user} used **${selectedMove.name}**!`;
 			} else {
-				resultMessage = `**${user}** tried to use **${selectedMove.name}**, but it missed!`;
+				resultMessage = `${interaction.user} tried to use **${selectedMove.name}**, but it missed!`;
 			}
 		}
 		await interaction.reply(resultMessage);
